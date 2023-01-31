@@ -177,7 +177,7 @@ namespace Interfaz
 
         public async static void BotonAbrirCodigoFuente(object sender, RoutedEventArgs e)
         {
-            await Launcher.LaunchUriAsync(new Uri("https://github.com/pepeizq/Widgets-Games"));
+            await Launcher.LaunchUriAsync(new Uri("https://github.com/pepeizq/Steam-Skins-WinUI"));
         }
 
         public async static void BotonAbrirContactar(object sender, RoutedEventArgs e)
