@@ -1,0 +1,17 @@
+<Application
+    x:Class="Steam_Skins.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Color x:Key="ColorFuente">#f7fcff</Color>
+            <Color x:Key="ColorPrimario">#202b20</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

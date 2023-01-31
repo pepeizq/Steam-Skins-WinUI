@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Steam Skins (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Steam Skins (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
