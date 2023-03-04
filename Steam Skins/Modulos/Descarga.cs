@@ -2,11 +2,11 @@
 using System;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.FileProperties;
+using Windows.System;
 using static Steam_Skins.MainWindow;
 
 namespace Modulos
@@ -20,35 +20,57 @@ namespace Modulos
 
             await Task.Delay(100);
 
-            HttpClient cliente = new HttpClient();
-            cliente.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1");
-            
-            try
+            IStorageFolder carpetaSteam = null;
+
+            await Task.Run(async () =>
             {
-                byte[] ficheroBytes = await cliente.GetByteArrayAsync(enlaceDescarga);
-                File.WriteAllBytes(ApplicationData.Current.LocalFolder.Path + "\\" + nombreSkin + ".zip", ficheroBytes);
-            }
-            catch { }
+                HttpClient cliente = new HttpClient();
+                cliente.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1");
 
-            StorageFile ficheroDescarga = await StorageFile.GetFileFromPathAsync(ApplicationData.Current.LocalFolder.Path + "\\" + nombreSkin + ".zip");
-            BasicProperties tamaño = await ficheroDescarga.GetBasicPropertiesAsync();
-
-            if (tamaño.Size > 0)
-            {
-                IStorageFolder carpetaSteam = await StorageFolder.GetFolderFromPathAsync(Steam.GenerarRuta() + "\\skins");
-                await ficheroDescarga.MoveAsync(carpetaSteam, "fichero", NameCollisionOption.ReplaceExisting);
-
-                ZipFile.ExtractToDirectory(ficheroDescarga.Path, carpetaSteam.Path, true);
-
-                if (carpetaEspecifica != null)
+                try
                 {
-                    Directory.Move(carpetaSteam.Path + "\\" + nombreSkin + "\\" + carpetaEspecifica, carpetaSteam.Path + "\\" + nombreSkin + "2");
-                    Directory.Delete(carpetaSteam.Path + "\\" + nombreSkin, true);
+                    byte[] ficheroBytes = await cliente.GetByteArrayAsync(enlaceDescarga);
+                    File.WriteAllBytes(ApplicationData.Current.LocalFolder.Path + "\\" + nombreSkin + ".zip", ficheroBytes);
                 }
+                catch { }
 
-                await ficheroDescarga.DeleteAsync();
-                
-                Steam.CambiarSkin(nombreSkin);
+                StorageFile ficheroDescarga = await StorageFile.GetFileFromPathAsync(ApplicationData.Current.LocalFolder.Path + "\\" + nombreSkin + ".zip");
+                BasicProperties tamaño = await ficheroDescarga.GetBasicPropertiesAsync();
+
+                if (tamaño.Size > 0)
+                {
+                    carpetaSteam = await StorageFolder.GetFolderFromPathAsync(Steam.GenerarRuta());
+                    await ficheroDescarga.MoveAsync(carpetaSteam, "fichero", NameCollisionOption.ReplaceExisting);
+
+                    ZipFile.ExtractToDirectory(ficheroDescarga.Path, carpetaSteam.Path, true);
+
+                    if (carpetaEspecifica != null)
+                    {
+                        try
+                        {
+                            Directory.Delete(carpetaSteam.Path + "\\" + nombreSkin + "2", true);
+                        }
+                        catch { }
+                        
+                        Directory.Move(carpetaSteam.Path + "\\" + nombreSkin + "\\" + carpetaEspecifica, carpetaSteam.Path + "\\" + nombreSkin + "2");
+                        Directory.Delete(carpetaSteam.Path + "\\" + nombreSkin, true);
+                    }
+
+                    await ficheroDescarga.DeleteAsync();
+
+                    Steam.CambiarSkin(nombreSkin);
+                }
+            });
+
+            ApplicationDataContainer datos = ApplicationData.Current.LocalSettings;
+            bool enseñarCarpeta = (bool)datos.Values["OpcionesSteamCarpeta"];
+
+            if (enseñarCarpeta == true)
+            {
+                if (carpetaSteam != null) 
+                {
+                    await Launcher.LaunchFolderAsync(carpetaSteam);
+                }               
             }
 
             ObjetosVentana.prSkinsDescarga.Visibility = Visibility.Collapsed;

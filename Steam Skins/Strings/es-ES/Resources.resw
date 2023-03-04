@@ -165,15 +165,6 @@
   <data name="MenuRate" xml:space="preserve">
     <value>Calificar la Aplicación</value>
   </data>
-  <data name="NoGamesBBDDMessage1.Text" xml:space="preserve">
-    <value>Hay juegos que tienes instalados y no han sido detectados por la aplicación.</value>
-  </data>
-  <data name="NoGamesBBDDMessage2.Text" xml:space="preserve">
-    <value>Si deseas ayudar con la aplicación, puedes contactar con el desarrollador diciendo que juegos e ids faltan.</value>
-  </data>
-  <data name="NoGamesDetected.Text" xml:space="preserve">
-    <value>Ningún juego detectado</value>
-  </data>
   <data name="Options" xml:space="preserve">
     <value>Opciones</value>
   </data>
@@ -184,7 +175,10 @@
     <value>Limpiar Datos</value>
   </data>
   <data name="OptionsAppCleanInfo.Text" xml:space="preserve">
-    <value>Pulsa el botón para limpiar todos los datos generados por la aplicación, se reiniciará la aplicación.</value>
+    <value>Limpiar Datos</value>
+  </data>
+  <data name="OptionsAppCleanInfo2.Text" xml:space="preserve">
+    <value>Todos los datos y ficheros generados por la aplicación serán eliminados, cuando termine se reiniciará la aplicación como si fuera una instalación limpia</value>
   </data>
   <data name="OptionsAppWindow1.Text" xml:space="preserve">
     <value>Defecto</value>
@@ -196,13 +190,19 @@
     <value>Superpuesta</value>
   </data>
   <data name="OptionsAppWindowInfo.Text" xml:space="preserve">
-    <value>Selecciona en que modo quieres que la aplicación se muestre en Windows:</value>
-  </data>
-  <data name="OptionsLanguage.Text" xml:space="preserve">
-    <value>Idioma</value>
+    <value>Modo en el que se mostrará la aplicación en Windows</value>
   </data>
   <data name="OptionsLanguageInfo.Text" xml:space="preserve">
-    <value>Selecciona el idioma de la aplicación, es necesario un reinicio en la aplicación para efectuar el cambio.</value>
+    <value>Idioma de la aplicación</value>
+  </data>
+  <data name="OptionsLanguageInfo2.Text" xml:space="preserve">
+    <value>Es necesario un reinicio en la aplicación para efectuar el cambio</value>
+  </data>
+  <data name="OptionsSteamFolder1.Text" xml:space="preserve">
+    <value>Carpeta de apariencias:</value>
+  </data>
+  <data name="OptionsSteamFolder2.Text" xml:space="preserve">
+    <value>Abrir en el Explorador de Archivos la carpeta de apariencias de Steam después de añadir una apariencia</value>
   </data>
   <data name="Right.Text" xml:space="preserve">
     <value>Derecha</value>

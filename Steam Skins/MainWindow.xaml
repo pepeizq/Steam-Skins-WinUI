@@ -127,8 +127,8 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Padding="40" HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <controls:ImageEx x:Name="imagenSkinSeleccionada" Stretch="UniformToFill" IsCacheEnabled="True" EnableLazyLoading="True" CornerRadius="5" MinHeight="200" MinWidth="200"/>
+                        <Grid Grid.Row="0" Margin="40" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Image x:Name="imagenSkinSeleccionada" Stretch="UniformToFill" MinHeight="200" MinWidth="200"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Padding="40,0,40,40">
@@ -162,42 +162,135 @@
                 </Grid>
 
                 <Grid x:Name="gridOpciones" Visibility="Collapsed">
-                    <ScrollViewer x:Name="svOpciones" VerticalScrollBarVisibility="Visible" Padding="0,0,15,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                        <StackPanel Orientation="Vertical" Padding="40">
-                            <Expander IsExpanded="True" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" RequestedTheme="Dark" CornerRadius="5" Margin="0,0,0,40">
-                                <Expander.Header>
-                                    <TextBlock x:Uid="OptionsLanguage" Foreground="{StaticResource ColorFuente}" Margin="10,0,0,0"/>
-                                </Expander.Header>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                                <Expander.Background>
-                                    <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
-                                </Expander.Background>
+                    <StackPanel x:Name="spOpcionesBotones" Grid.Column="0" Orientation="Vertical" Padding="40" HorizontalAlignment="Stretch" MinWidth="300">
+                        <interfaz:Button2 Background="Transparent" Padding="18,15" RequestedTheme="Light" BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" CornerRadius="5">
+                            <interfaz:Button2.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <StackPanel Orientation="Vertical" Padding="10">
-                                    <TextBlock x:Uid="OptionsLanguageInfo" Foreground="{StaticResource ColorFuente}" Margin="0,0,0,20"/>
-                                    <interfaz:ComboBox2 x:Name="cbOpcionesIdioma" RequestedTheme="Dark" CornerRadius="5"/>
+                                    <iconos:FontAwesome Icon="Brands_Steam" Grid.Column="0" Foreground="{StaticResource ColorFuente}" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Steam" Grid.Column="1" Foreground="{StaticResource ColorFuente}" Margin="20,0,0,0"/>
+                                </Grid>
+                            </interfaz:Button2.Content>
+                        </interfaz:Button2>
+                        <interfaz:Button2 Background="Transparent" Padding="18,15" RequestedTheme="Light" BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" CornerRadius="5" Margin="0,10,0,0">
+                            <interfaz:Button2.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <iconos:FontAwesome Icon="Solid_Computer" Grid.Column="0" Foreground="{StaticResource ColorFuente}" HorizontalAlignment="Center"/>
+                                    <TextBlock x:Uid="OptionsApp" Grid.Column="1" Foreground="{StaticResource ColorFuente}" Margin="20,0,0,0"/>
+                                </Grid>
+                            </interfaz:Button2.Content>
+                        </interfaz:Button2>
+                    </StackPanel>
+                    
+                    <ScrollViewer x:Name="svOpciones" Grid.Column="1" VerticalScrollBarVisibility="Visible" Padding="0,0,5,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                        <StackPanel x:Name="spOpcionesPestanas" Orientation="Vertical" Padding="40">
+                            <StackPanel Orientation="Vertical" Visibility="Collapsed">
+                                <StackPanel Orientation="Vertical" Padding="30" CornerRadius="5">
+                                    <StackPanel.Background>
+                                        <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
+                                    </StackPanel.Background>
+
+                                    <TextBlock x:Uid="OptionsSteamFolder1" Foreground="{StaticResource ColorFuente}" Margin="0,0,0,20"/>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <interfaz:Button2 x:Name="botonOpcionesSteamCambiarCarpeta" Grid.Column="0" Background="{StaticResource ColorPrimario}" Padding="15,10" BorderThickness="0" CornerRadius="5">
+                                            <interfaz:Button2.Content>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <iconos:FontAwesome Icon="Solid_Folder" Foreground="{StaticResource ColorFuente}"/>
+                                                </StackPanel>
+                                            </interfaz:Button2.Content>
+                                        </interfaz:Button2>
+
+                                        <TextBlock x:Name="tbOpcionesSteamRutaCarpeta" Grid.Column="1" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                                    </Grid>
                                 </StackPanel>
-                            </Expander>
 
-                            <Expander IsExpanded="True" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" RequestedTheme="Dark" CornerRadius="5">
-                                <Expander.Header>
-                                    <TextBlock x:Uid="OptionsApp" Foreground="{StaticResource ColorFuente}" Margin="10,0,0,0"/>
-                                </Expander.Header>
+                                <Grid Padding="30" Margin="0,5,0,0" CornerRadius="5">
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
+                                    </Grid.Background>
 
-                                <Expander.Background>
-                                    <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
-                                </Expander.Background>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <StackPanel Orientation="Vertical" Padding="10">
-                                    <TextBlock x:Uid="OptionsAppWindowInfo" Foreground="{StaticResource ColorFuente}" Margin="0,0,0,20"/>
-                                    <interfaz:ComboBox2 x:Name="cbOpcionesPantalla" RequestedTheme="Dark" Margin="0,0,0,25" CornerRadius="5">
+                                    <TextBlock x:Uid="OptionsSteamFolder2" Grid.Column="0" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                                    <ToggleSwitch x:Name="tsOpcionesSteamCarpeta" Grid.Column="1" RequestedTheme="Dark" VerticalAlignment="Center" MinWidth="0"/>
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Visibility="Collapsed">
+                                <Grid Padding="30" CornerRadius="5">
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
+                                    </Grid.Background>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,20,0">
+                                        <TextBlock x:Uid="OptionsLanguageInfo" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                        <TextBlock x:Uid="OptionsLanguageInfo2" FontSize="13" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                                    </StackPanel>
+                                    
+                                    <interfaz:ComboBox2 x:Name="cbOpcionesIdioma" Grid.Column="1" RequestedTheme="Dark" CornerRadius="5"/>
+                                </Grid>
+
+                                <Grid Padding="30" CornerRadius="5" Margin="0,5,0,0">
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
+                                    </Grid.Background>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock x:Uid="OptionsAppWindowInfo" Grid.Column="0" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                                    <interfaz:ComboBox2 x:Name="cbOpcionesPantalla" Grid.Column="1" RequestedTheme="Dark" CornerRadius="5">
                                         <TextBlock x:Uid="OptionsAppWindow1"/>
                                         <TextBlock x:Uid="OptionsAppWindow2"/>
                                         <TextBlock x:Uid="OptionsAppWindow3"/>
                                     </interfaz:ComboBox2>
+                                </Grid>
 
-                                    <TextBlock x:Uid="OptionsAppCleanInfo" Foreground="{StaticResource ColorFuente}" Margin="0,0,0,20"/>
-                                    <interfaz:Button2 x:Name="botonOpcionesLimpiar" Background="{StaticResource ColorPrimario}" Padding="15,12,15,14" RequestedTheme="Light" BorderThickness="0" CornerRadius="5">
+                                <Grid Padding="30" CornerRadius="5" Margin="0,5,0,0">
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
+                                    </Grid.Background>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,20,0">
+                                        <TextBlock x:Uid="OptionsAppCleanInfo" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                        <TextBlock x:Uid="OptionsAppCleanInfo2" FontSize="13" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                                    </StackPanel>
+
+                                    <interfaz:Button2 x:Name="botonOpcionesLimpiar" Grid.Column="1" Background="{StaticResource ColorPrimario}" Padding="15,12,15,14" RequestedTheme="Light" BorderThickness="0" CornerRadius="5">
                                         <interfaz:Button2.Content>
                                             <StackPanel Orientation="Horizontal">
                                                 <iconos:FontAwesome Icon="Solid_Trash" Foreground="{StaticResource ColorFuente}" FontSize="15"/>
@@ -205,8 +298,8 @@
                                             </StackPanel>
                                         </interfaz:Button2.Content>
                                     </interfaz:Button2>
-                                </StackPanel>
-                            </Expander>
+                                </Grid>
+                            </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

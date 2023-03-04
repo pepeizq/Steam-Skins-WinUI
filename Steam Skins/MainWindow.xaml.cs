@@ -20,8 +20,9 @@ namespace Steam_Skins
             Pestañas.Cargar();
             ScrollViewers.Cargar();
             Interfaz.Menu.Cargar();
-            Opciones.CargarDatos();
+            Opciones.Cargar();
             Skins.Cargar();
+            Steam.CargarRuta();
         }
 
         public void CargarObjetosVentana()
@@ -53,7 +54,12 @@ namespace Steam_Skins
 
             //-------------------------------------------------------------------
 
+            ObjetosVentana.spOpcionesBotones = spOpcionesBotones;
             ObjetosVentana.svOpciones = svOpciones;
+            ObjetosVentana.spOpcionesPestañas = spOpcionesPestanas;
+            ObjetosVentana.botonOpcionesSteamCambiarCarpeta = botonOpcionesSteamCambiarCarpeta;
+            ObjetosVentana.tbOpcionesSteamRutaCarpeta = tbOpcionesSteamRutaCarpeta;
+            ObjetosVentana.tsOpcionesSteamCarpeta = tsOpcionesSteamCarpeta;
             ObjetosVentana.cbOpcionesIdioma = cbOpcionesIdioma;
             ObjetosVentana.cbOpcionesPantalla = cbOpcionesPantalla;
             ObjetosVentana.botonOpcionesLimpiar = botonOpcionesLimpiar;
@@ -81,14 +87,19 @@ namespace Steam_Skins
             public static StackPanel spSkins { get; set; }
             public static Grid gridSkinMensaje { get; set; }
             public static Grid gridSkinSeleccionada { get; set; }
-            public static ImageEx imagenSkinSeleccionada { get; set; }
+            public static Image imagenSkinSeleccionada { get; set; }
             public static Button botonSkinsDescarga { get; set; }
             public static ProgressRing prSkinsDescarga { get; set; }
             public static Button botonSkinsGithub { get; set; }
 
             //-------------------------------------------------------------------
-
+          
+            public static StackPanel spOpcionesBotones { get; set; }
             public static ScrollViewer svOpciones { get; set; }
+            public static StackPanel spOpcionesPestañas { get; set; }
+            public static Button botonOpcionesSteamCambiarCarpeta { get; set; }
+            public static TextBlock tbOpcionesSteamRutaCarpeta { get; set; }
+            public static ToggleSwitch tsOpcionesSteamCarpeta { get; set; }
             public static ComboBox cbOpcionesIdioma { get; set; }
             public static ComboBox cbOpcionesPantalla { get; set; }
             public static Button botonOpcionesLimpiar { get; set; }

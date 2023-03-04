@@ -3,6 +3,7 @@ using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using System;
 using System.Collections.Generic;
 using Windows.System;
@@ -209,7 +210,7 @@ namespace Modulos
             boton.Background = new SolidColorBrush((Color)Application.Current.Resources["ColorPrimario"]);
             Skin skin = boton.Tag as Skin;
 
-            ObjetosVentana.imagenSkinSeleccionada.Source = skin.screenshoot;
+            ObjetosVentana.imagenSkinSeleccionada.Source = new BitmapImage(new Uri(skin.screenshoot, UriKind.Absolute));
             ObjetosVentana.botonSkinsDescarga.Tag = skin;
             ObjetosVentana.botonSkinsGithub.Tag = skin;
 
