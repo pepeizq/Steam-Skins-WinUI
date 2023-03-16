@@ -120,6 +120,24 @@
   <data name="AnyGame" xml:space="preserve">
     <value>Cualquier Juego</value>
   </data>
+  <data name="AppClosingMessage1" xml:space="preserve">
+    <value>Esta aplicación es de código abierto y puedes consultarlo en Github, y si tienes cuenta allí te agradecería una estrella</value>
+  </data>
+  <data name="AppClosingMessage2" xml:space="preserve">
+    <value>Puedes valorar la aplicación en la Tienda de Microsoft, no te voy a decir como debes valorarme pero espero que tengáis en cuenta que soy un único desarrollador con la aplicación</value>
+  </data>
+  <data name="AppClosingMessage3" xml:space="preserve">
+    <value>Puedes consultar las últimas actualizaciones que he lanzado para esta aplicación en mi web, no esperéis kilométricas actualizaciones por que sólo dos manos trabajan en esta aplicación</value>
+  </data>
+  <data name="AppClosingNo.Text" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="AppClosingQuestion.Text" xml:space="preserve">
+    <value>¿Deseas cerrar la aplicación?</value>
+  </data>
+  <data name="AppClosingYes.Text" xml:space="preserve">
+    <value>Sí</value>
+  </data>
   <data name="Arguments.Text" xml:space="preserve">
     <value>Argumentos</value>
   </data>
@@ -164,6 +182,9 @@
   </data>
   <data name="MenuRate" xml:space="preserve">
     <value>Calificar la Aplicación</value>
+  </data>
+  <data name="Open.Text" xml:space="preserve">
+    <value>Abrir</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Opciones</value>

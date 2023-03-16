@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using System.Collections.Generic;
 using Windows.UI;
 
 namespace Interfaz
@@ -55,55 +56,61 @@ namespace Interfaz
         public static void EntraRatonBoton2(object sender, PointerRoutedEventArgs e)
         {
             Button2 boton = sender as Button2;
-
-            if (boton != null) 
-            {
-                boton.CambiarCursor(InputSystemCursor.Create(InputSystemCursorShape.Hand));
-
-                if (boton.Content.GetType() == typeof(StackPanel))
-                {
-                    StackPanel sp = boton.Content as StackPanel;
-
-                    foreach (object objeto in sp.Children)
-                    {
-                        if (objeto.GetType() == typeof(TextBlock))
-                        {
-                            TextBlock tb = objeto as TextBlock;
-                            tb.Foreground = new SolidColorBrush((Color)Application.Current.Resources["ColorPrimario"]);
-                        }
-                        else if (objeto.GetType() == typeof(FontAwesome))
-                        {
-                            FontAwesome icono = objeto as FontAwesome;
-                            icono.Foreground = new SolidColorBrush((Color)Application.Current.Resources["ColorPrimario"]);
-                        }
-                    }
-                }
-            }
+            EventoBoton(boton, "ColorPrimario");
         }
 
         public static void SaleRatonBoton2(object sender, PointerRoutedEventArgs e)
         {
             Button2 boton = sender as Button2;
+            EventoBoton(boton, "ColorFuente");
+        }
 
-            if (boton != null) 
+        private static void EventoBoton(Button2 boton, string color)
+        {
+            if (boton != null)
             {
-                boton.CambiarCursor(InputSystemCursor.Create(InputSystemCursorShape.Arrow));
+                boton.CambiarCursor(InputSystemCursor.Create(InputSystemCursorShape.Hand));
+
+                List<object> listaObjetos = new List<object>();
 
                 if (boton.Content.GetType() == typeof(StackPanel))
                 {
                     StackPanel sp = boton.Content as StackPanel;
 
-                    foreach (object objeto in sp.Children)
+                    if (sp.Children.Count > 0)
+                    {
+                        foreach (object objeto in sp.Children)
+                        {
+                            listaObjetos.Add(objeto);
+                        }
+                    }
+                }
+                else if (boton.Content.GetType() == typeof(Grid))
+                {
+                    Grid grid = boton.Content as Grid;
+
+                    if (grid.Children.Count > 0)
+                    {
+                        foreach (object objeto in grid.Children)
+                        {
+                            listaObjetos.Add(objeto);
+                        }
+                    }
+                }
+
+                if (listaObjetos.Count > 0)
+                {
+                    foreach (object objeto in listaObjetos)
                     {
                         if (objeto.GetType() == typeof(TextBlock))
                         {
                             TextBlock tb = objeto as TextBlock;
-                            tb.Foreground = new SolidColorBrush((Color)Application.Current.Resources["ColorFuente"]);
+                            tb.Foreground = new SolidColorBrush((Color)Application.Current.Resources[color]);
                         }
                         else if (objeto.GetType() == typeof(FontAwesome))
                         {
                             FontAwesome icono = objeto as FontAwesome;
-                            icono.Foreground = new SolidColorBrush((Color)Application.Current.Resources["ColorFuente"]);
+                            icono.Foreground = new SolidColorBrush((Color)Application.Current.Resources[color]);
                         }
                     }
                 }
